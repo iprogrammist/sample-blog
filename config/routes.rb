@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'home/index'
 
+  #get '/contacts/new' => 'contacts'
+
   resource :contacts, only: [:new, :create], path_names: { :new => '' }
   resources :articles
 
