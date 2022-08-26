@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
      @article = Article.find(params[:article_id])
      @article.comments.create(comment_params)
 
-     redirect_to articles_path(@article) 
+     redirect_to article_path(@article) 
   end
 
   private
