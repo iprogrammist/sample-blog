@@ -76,3 +76,9 @@ gem 'devise'
 group :development, :test do
   gem 'rspec-rails'
 end
+
+group :test do
+  gem "shoulda-matchers", require: false
+end
+
+gem 'ffi'
