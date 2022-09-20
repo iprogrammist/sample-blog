@@ -33,4 +33,28 @@ en:
   hello: "Hello world"
 
   contacts:
-    contact_us: "Contact Us!"
+    contact_us: "Contact Us"
+    send_message: "Send message"
+    sent: "Thanks!"
+
+  pages:
+    about_us: "About Us"
+    terms_of_service: "Terms of Service"  
+
+  articles:
+    new:  "New Article"
+    edit: "Edit Article"
+    create: "Save Article"
+    create_comment:  "Create Comment"
+    submit: "Save Article"
+
+  comments:
+    comments_header: "Comments"
+    add_comment: "Add comment" 
+    post_comments: "You must be logged into your account to post comments."
+    post_comments_word_or: "or"
+
+  layouts:
+    user_greetings: "Hello,"
+      
+

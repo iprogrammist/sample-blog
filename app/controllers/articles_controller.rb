@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
 
-  before_action :authenticate_user!, :only => [:new, :create]
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :destroy]
   
   def index
-    @articles = Article.all
+    @articles = Article.all.order("updated_at DESC")
   end
 
   def show
@@ -11,14 +11,15 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
   end
   
   def create
-
     @article = Article.new(article_params)
+    @article.user = current_user
     
     if @article.save
-      redirect_to @article
+        redirect_to @article
     else
       render action: 'new'
     end 
@@ -26,6 +27,12 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+
+    if current_user.id != @article.user_id
+      @articles = Article.all.order("updated_at DESC")
+
+      render action: 'index'
+    end
   end
 
   def update
@@ -40,9 +47,15 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
 
-    redirect_to articles_path
+    if current_user.id != @article.user_id
+      @articles = Article.all.order("updated_at DESC")
+
+      render action: 'index'
+    else
+      @article.destroy
+      redirect_to articles_path
+    end
   end  
 
   private

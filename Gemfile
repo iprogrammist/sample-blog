@@ -84,3 +84,7 @@ group :test do
 end
 
 gem 'ffi'
+
+gem 'bootstrap'
+
+gem 'sassc-rails'

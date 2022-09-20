@@ -1,18 +1,13 @@
 require "rails_helper"
 
-feature "Article Creation" do
-  
-  before(:each) do
+feature "Comment Creation" do
+
+  before(:all) do
     sign_up
   end
 
-  scenario "allows user to visit new article page" do
-    visit new_article_path
-    expect(page).to have_content 'New article'
-  end
-
   scenario "allows user to create new article" do
-    
+
     visit new_article_path
 
     fill_in :article_title, :with => 'Test Article'
@@ -20,8 +15,10 @@ feature "Article Creation" do
 
     click_button I18n.t('articles.create')
 
-    expect(page).to have_content 'Test Article'
-  end 
-end
+    fill_in :comment_body, :with => 'This is a test comment'
 
-  
+    click_button I18n.t('articles.create_comment')
+
+    expect(page).to have_content 'This is a test comment'
+  end
+end
